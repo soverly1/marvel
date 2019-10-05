@@ -55,18 +55,17 @@ def print_header():
 
 def main(): 
   form = cgi.FieldStorage()
-  if (form.getvalue("name") and form.getvalue("type_select")):
-    print_header()
-    name=form.getvalue("name").upper()
-    ltype=form.getvalue("type_select")
-    if ltype=="charName":
-        full_charmap=TheIndex(fileName) 
-        user_entry="peter"
-        print("Looking up matches for the name","'"+user_entry+"'"+". . .")
-        l=full_charmap.getResults(user_entry) 
-        print(l)
-     else:
-        print("idk")
-  else:
-      print("Error in submission")
+  print_header()
+  full_charmap=TheIndex(fileName) 
+  user_entry=input()
+  print("Looking up matches for the name","'"+user_entry+"'"+". . .")
+  l=full_charmap.getResults(user_entry) 
+  result=""
+  for a in l:
+    print(a)
+    b=self.charmap.get(a)
+    result += b 
+  print(result)
+  return result
+  
 main()
